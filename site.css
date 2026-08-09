@@ -772,12 +772,17 @@ p:last-child { margin-bottom: 0; }
 
 .contact-form .btn:disabled { opacity: 0.4; cursor: not-allowed; }
 
-.form-note {
-  font-size: var(--t-xs);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--apricot);
+.form-status {
   margin: 0;
+  font-size: var(--t-sm);
+  min-height: 1.4em;            /* reserve the line so the button doesn't jump */
+}
+.form-status[data-state="ok"]    { color: var(--apricot); }
+.form-status[data-state="error"] { color: #FF9B8A; }
+
+.contact-form button[type="submit"]:disabled {
+  opacity: 0.5;
+  cursor: progress;
 }
 
 /* ============================================================
@@ -877,6 +882,26 @@ p:last-child { margin-bottom: 0; }
 @media (max-width: 560px) {
   .spec-list li,
   .credits li { grid-template-columns: 1fr; gap: 0.25rem; }
+}
+
+/* Self-hosted player. Capped so a 16:9 clip doesn't dominate a wide screen. */
+.video-player {
+  display: block;
+  width: 100%;
+  max-width: 60rem;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  background: var(--black);
+}
+
+/* Portrait photograph in a two-column split — capped so it doesn't tower over
+   the column of text beside it. */
+.portrait-img {
+  width: 100%;
+  height: auto;
+  max-height: 40rem;
+  object-fit: cover;
+  object-position: center 30%;
 }
 
 /* Full-width feature image, shown at its own ratio rather than cropped. */
@@ -1051,36 +1076,41 @@ p:last-child { margin-bottom: 0; }
   color: var(--on-dark-muted);
 }
 
-.clip-list {
+/* Instagram clip embeds. Their official /embed/ iframe renders for logged-out
+   visitors and brings its own thumbnail, player and like count, so it beats any
+   hand-made card. Height is fixed because a cross-origin frame can't size itself. */
+.clip-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(0.75rem, 1.6vw, 1.25rem);
   list-style: none;
   margin: 0;
   padding: 0;
 }
-.clip-list a {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 1rem;
-  padding: 1.1rem 1.25rem;
-  border: 1px solid var(--rule);
-  text-decoration: none;
-  transition: background 0.25s var(--ease), border-color 0.25s var(--ease);
+.clip-grid li { min-width: 0; }
+/* Instagram's embed is a fixed-height cross-origin frame; it can't size itself,
+   so 700px is set to clear the full chrome for a 9:16 reel at this column width.
+   Anything shorter slices through the comment row and leaves a sliver. */
+.clip-grid iframe {
+  display: block;
+  width: 100%;
+  height: 700px;
+  border: 0;
+  background: var(--white);
 }
-.clip-list a:hover { background: var(--apricot); border-color: var(--apricot); }
-.clip-list a span:first-child {
-  font-family: var(--display);
-  font-size: var(--t-md);
-  text-transform: uppercase;
+
+
+/* The default .link-row sits on dark sections; this variant works on pale. */
+.link-row--light a { border-color: var(--rule); }
+.link-row--light a:hover { border-color: var(--apricot); }
+@media (max-width: 900px) {
+  .clip-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
-.clip-list a span:last-child {
-  font-size: var(--t-xs);
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--ink-muted);
+@media (max-width: 560px) {
+  .clip-grid { grid-template-columns: 1fr; }
+  .clip-grid iframe { height: 620px; }
+}
+
 }
 
 /* ============================================================
@@ -1100,34 +1130,6 @@ p:last-child { margin-bottom: 0; }
   border-top-color: rgba(0, 0, 0, 0.22);
 }
 
-.quotes {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
-  gap: clamp(1.75rem, 4vw, 3.5rem);
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-.quotes blockquote {
-  margin: 0;
-  padding-top: 1.25rem;
-  border-top: 1px solid var(--rule);
-}
-.quotes blockquote p {
-  font-family: var(--display);
-  font-size: var(--t-md);
-  line-height: 1.25;
-  margin: 0 0 1rem;
-}
-.quotes cite {
-  font-family: var(--ui);
-  font-style: normal;
-  font-size: var(--t-xs);
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--ink-muted);
-}
 
 /* ============================================================
    MOTION

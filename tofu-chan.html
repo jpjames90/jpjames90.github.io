@@ -31,7 +31,6 @@
     <nav class="site-nav" id="site-nav" aria-label="Primary">
       <ul>
         <li><a href="index.html#work" aria-current="page">work</a></li>
-        <li><a href="phenomena.html">phenomena</a></li>
         <li><a href="index.html#music">music</a></li>
         <li><a href="lemonade-fuzz.html">lemonade fuzz</a></li>
         <li><a href="index.html#about">about</a></li>
@@ -57,10 +56,8 @@
         <div>
           <p class="section-label">The work</p>
           <p class="lede">I created the original sound and music direction for Tofu Chan &mdash; setting the sonic identity the series is built on.</p>
-          <p>Lo-fi, hip hop and ambient, written and produced to sit under the character rather than on top of it.</p>
-          <!-- TODO(JP): one or two sentences on the brief — what was the sound meant to feel like,
-               and what did you set early that stuck? -->
-          <p class="placeholder">Brief and approach &mdash; one or two sentences to be supplied</p>
+          <p>I wanted it bright and positive: the character, translated into audio. The references are almost all Japanese &mdash; 90s game music from the Game Boy era, anime, and the particular warmth of a karaoke bar.</p>
+          <p>The rest of the brief was simpler, and it mattered more. Tofu is an inspirational character. I wanted people to finish a clip feeling lifted, like today is going to be a good day.</p>
 
           <blockquote class="credit-quote" style="margin-top:2rem">
             <p>&ldquo;He is the main producer and writer for most of Tofu Chan&rsquo;s music.&rdquo;</p>
@@ -92,16 +89,44 @@
            loading="lazy" decoding="async">
 
       <p class="section-label">Clips</p>
-      <ul class="clip-list">
-        <li><a href="https://www.instagram.com/reel/CTa18NoBmBX/" rel="noopener"><span>Reel</span><span>Instagram</span></a></li>
-        <li><a href="https://www.instagram.com/reel/CZNhtQLpOgf/" rel="noopener"><span>Reel</span><span>Instagram</span></a></li>
-        <li><a href="https://www.instagram.com/reel/CVjKJxaBIP_/" rel="noopener"><span>Reel</span><span>Instagram</span></a></li>
-        <li><a href="https://www.instagram.com/p/B95Z_SbHgdP/" rel="noopener"><span>Post</span><span>Instagram</span></a></li>
-        <li><a href="https://www.instagram.com/p/CHoi5P2gQW-/" rel="noopener"><span>Post</span><span>Instagram</span></a></li>
-        <li><a href="https://www.instagram.com/p/B0w9BUgn_fl/" rel="noopener"><span>Post</span><span>Instagram</span></a></li>
+      <!-- Instagram's official embed, left intact. It renders for logged-out
+           visitors and carries its own thumbnail, player and attribution.
+           lazy loading keeps the frames from all firing on page load. -->
+      <ul class="clip-grid">
+        <li>
+          <iframe src="https://www.instagram.com/reel/CTa18NoBmBX/embed/"
+                    title="Tofu Chan on Instagram"
+                    loading="lazy" scrolling="no"></iframe>
+        </li>
+        <li>
+          <iframe src="https://www.instagram.com/reel/CZNhtQLpOgf/embed/"
+                    title="Tofu Chan on Instagram"
+                    loading="lazy" scrolling="no"></iframe>
+        </li>
+        <li>
+          <iframe src="https://www.instagram.com/reel/CVjKJxaBIP_/embed/"
+                    title="Tofu Chan on Instagram"
+                    loading="lazy" scrolling="no"></iframe>
+        </li>
+        <li>
+          <iframe src="https://www.instagram.com/p/B95Z_SbHgdP/embed/"
+                    title="Tofu Chan on Instagram"
+                    loading="lazy" scrolling="no"></iframe>
+        </li>
+        <li>
+          <iframe src="https://www.instagram.com/p/B0w9BUgn_fl/embed/"
+                    title="Tofu Chan on Instagram"
+                    loading="lazy" scrolling="no"></iframe>
+        </li>
       </ul>
-      <!-- TODO(JP): stills would let these become proper thumbnail cards instead of text links.
-           You noted "Tofu still coming soon" — send it through and I'll swap them. -->
+
+      <p class="section-label" style="margin-top:clamp(3rem,6vw,4.5rem)">Tofu Chan online</p>
+      <ul class="link-row link-row--light">
+        <li><a href="https://www.instagram.com/tofupupper/" rel="noopener">Instagram</a></li>
+        <li><a href="https://www.youtube.com/@Tofupupper" rel="noopener">YouTube</a></li>
+        <li><a href="https://tofupupper.fandom.com/" rel="noopener">Tofupupper Wiki</a></li>
+        <li><a href="https://tofupupper.fandom.com/wiki/John-Paul_James" rel="noopener">My page on the wiki</a></li>
+      </ul>
     </div>
   </section>
 
@@ -123,7 +148,6 @@
       <a class="site-footer__email" href="mailto:johnpaul.deg@gmail.com">johnpaul.deg@gmail.com</a>
       <ul class="footer-links">
         <li><a href="index.html#work">Work</a></li>
-        <li><a href="phenomena.html">Phenomena</a></li>
         <li><a href="lemonade-fuzz.html">Lemonade Fuzz</a></li>
         <li><a href="index.html#contact">Contact</a></li>
       </ul>
@@ -136,8 +160,5 @@
 </footer>
 
 <script src="site.js"></script>
-<!-- Uncomment once Instagram embeds are pasted in above:
-<script async src="https://www.instagram.com/embed.js"></script>
--->
 </body>
 </html>

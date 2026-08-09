@@ -34,6 +34,66 @@
     });
   }
 
+  /* ---- Contact form ----
+     Posts to FormSubmit's JSON endpoint so the reply lands inline instead of
+     bouncing the visitor to a third-party confirmation page. If JS is off, or
+     the request fails, the form's plain action still submits normally. */
+  var form = document.querySelector('.contact-form');
+
+  if (form && window.fetch) {
+    var status = form.querySelector('.form-status');
+    var button = form.querySelector('button[type="submit"]');
+    var ajaxAction = form.getAttribute('data-ajax-action');
+
+    var setStatus = function (message, state) {
+      if (!status) return;
+      status.textContent = message;
+      status.setAttribute('data-state', state || '');
+    };
+
+    form.addEventListener('submit', function (e) {
+      if (!ajaxAction) return; // fall through to the normal POST
+      e.preventDefault();
+
+      var original = button ? button.textContent : '';
+      if (button) {
+        button.disabled = true;
+        button.textContent = 'Sending';
+      }
+      setStatus('', '');
+
+      fetch(ajaxAction, {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: new FormData(form)
+      })
+        .then(function (res) {
+          return res.json().catch(function () { return {}; });
+        })
+        .then(function (data) {
+          // FormSubmit returns success as a string on some responses.
+          if (String(data.success) === 'true') {
+            form.reset();
+            setStatus('Thanks — that’s come through. I’ll be in touch.', 'ok');
+          } else {
+            throw new Error(data.message || 'Unexpected response');
+          }
+        })
+        .catch(function () {
+          setStatus(
+            'That didn’t send. Email johnpaul.deg@gmail.com directly and it’ll reach me.',
+            'error'
+          );
+        })
+        .then(function () {
+          if (button) {
+            button.disabled = false;
+            button.textContent = original;
+          }
+        });
+    });
+  }
+
   /* ---- Header goes solid once the hero is out of the way ---- */
   var header = document.querySelector('.site-header');
   var hero = document.querySelector('.hero');

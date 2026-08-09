@@ -54,7 +54,6 @@
     <nav class="site-nav" id="site-nav" aria-label="Primary">
       <ul>
         <li><a href="#work">work</a></li>
-        <li><a href="phenomena.html">phenomena</a></li>
         <li><a href="#music">music</a></li>
         <li><a href="lemonade-fuzz.html">lemonade fuzz</a></li>
         <li><a href="#about">about</a></li>
@@ -214,12 +213,22 @@
   <section class="section" id="lemonade-fuzz">
     <div class="wrap">
       <p class="section-label">Live</p>
-      <!-- TODO(JP): when a live photo exists, wrap this back into a .split with the
-           image in a second column. Single column until then. -->
-      <div class="stack">
-        <h2 class="split__title">Lemonade Fuzz</h2>
-        <p class="lede">A duo that sounds like a full band. Live looping, drum machine, bass, two vocals, and triggers we control on the night &mdash; run by two audio engineers who dial in the room before anyone arrives.</p>
-        <p><a class="btn" href="lemonade-fuzz.html">Bookings and full details</a></p>
+      <div class="split">
+        <div>
+          <h2 class="split__title">Lemonade Fuzz</h2>
+          <p class="lede">A duo that sounds like a full band. Live looping, drum machine, bass, two vocals, and triggers we control on the night &mdash; run by two audio engineers who dial in the room before anyone arrives.</p>
+          <p><a class="btn" href="lemonade-fuzz.html">Bookings and full details</a></p>
+        </div>
+        <div>
+          <img class="portrait-img"
+               src="lemonade-fuzz-900.jpg"
+               srcset="lemonade-fuzz-600.jpg 600w,
+                       lemonade-fuzz-900.jpg 900w,
+                       lemonade-fuzz-1400.jpg 1400w"
+               sizes="(max-width: 860px) 100vw, 45vw"
+               alt="Lemonade Fuzz playing live: one member on hollow-body guitar, the other on bass, with pedalboards and cabling across the floor."
+               loading="lazy" decoding="async">
+        </div>
       </div>
     </div>
   </section>
@@ -251,23 +260,34 @@
           <p><a class="contact-email" href="mailto:johnpaul.deg@gmail.com">johnpaul.deg@gmail.com</a></p>
         </div>
 
-        <!-- TODO(JP): replace FORMSPREE_ID once the free Formspree account is set up.
-             Until then the form is disabled and the email link above is the working path. -->
-        <form class="contact-form" action="https://formspree.io/f/FORMSPREE_ID" method="POST">
-          <p class="form-note">The form isn&rsquo;t connected yet &mdash; email works.</p>
+        <!-- FormSubmit needs no account or API key: submissions post to this address,
+             which is already published above. site.js upgrades it to the /ajax/
+             endpoint so the reply appears inline; without JS the plain POST still
+             works and FormSubmit shows its own confirmation page. -->
+        <form class="contact-form"
+              action="https://formsubmit.co/johnpaul.deg@gmail.com"
+              method="POST"
+              data-ajax-action="https://formsubmit.co/ajax/johnpaul.deg@gmail.com">
+          <input type="hidden" name="_subject" value="Enquiry from jpjames.com.au">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="table">
+          <!-- Spam trap: real people never fill this in. -->
+          <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" class="visually-hidden">
+
           <label>
             <span>Name</span>
-            <input type="text" name="name" autocomplete="name" required disabled>
+            <input type="text" name="name" autocomplete="name" required>
           </label>
           <label>
             <span>Email</span>
-            <input type="email" name="email" autocomplete="email" required disabled>
+            <input type="email" name="email" autocomplete="email" required>
           </label>
           <label>
             <span>What&rsquo;s it for?</span>
-            <textarea name="message" rows="5" required disabled></textarea>
+            <textarea name="message" rows="5" required></textarea>
           </label>
-          <button class="btn" type="submit" disabled>Send</button>
+          <button class="btn" type="submit">Send</button>
+          <p class="form-status" role="status" aria-live="polite"></p>
         </form>
       </div>
     </div>
@@ -281,7 +301,6 @@
       <a class="site-footer__email" href="mailto:johnpaul.deg@gmail.com">johnpaul.deg@gmail.com</a>
       <ul class="footer-links">
         <li><a href="#work">Work</a></li>
-        <li><a href="phenomena.html">Phenomena</a></li>
         <li><a href="lemonade-fuzz.html">Lemonade Fuzz</a></li>
         <li><a href="#contact">Contact</a></li>
         <li><a href="https://www.instagram.com/johnpaul_james_/" rel="noopener">Instagram</a></li>

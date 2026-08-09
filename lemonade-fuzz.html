@@ -31,7 +31,6 @@
     <nav class="site-nav" id="site-nav" aria-label="Primary">
       <ul>
         <li><a href="index.html#work">work</a></li>
-        <li><a href="phenomena.html">phenomena</a></li>
         <li><a href="index.html#music">music</a></li>
         <li><a href="lemonade-fuzz.html" aria-current="page">lemonade fuzz</a></li>
         <li><a href="index.html#about">about</a></li>
@@ -60,34 +59,19 @@
           <p>Honestly, we just want to play. More shows means more of that.</p>
         </div>
         <div>
-          <!-- TODO(JP): Lemonade Fuzz live photo. -->
-          <span class="placeholder placeholder--media">Live photo &mdash; to be supplied</span>
+          <img class="portrait-img"
+               src="lemonade-fuzz-900.jpg"
+               srcset="lemonade-fuzz-600.jpg 600w,
+                       lemonade-fuzz-900.jpg 900w,
+                       lemonade-fuzz-1400.jpg 1400w"
+               sizes="(max-width: 860px) 100vw, 45vw"
+               alt="Lemonade Fuzz playing live: one member on hollow-body guitar, the other on bass, with pedalboards and cabling across the floor."
+               loading="lazy" decoding="async">
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Quotes are scaffolded but deliberately empty. These have to be things real
-       people actually said, with their names on them. Nothing invented here. -->
-  <section class="section section--pale">
-    <div class="wrap">
-      <p class="section-label">What people say</p>
-      <ul class="quotes">
-        <li>
-          <blockquote>
-            <p class="placeholder">Client quote &mdash; to be supplied</p>
-            <cite class="placeholder">Name, event or venue</cite>
-          </blockquote>
-        </li>
-        <li>
-          <blockquote>
-            <p class="placeholder">Client quote &mdash; to be supplied</p>
-            <cite class="placeholder">Name, event or venue</cite>
-          </blockquote>
-        </li>
-      </ul>
-    </div>
-  </section>
 
   <section class="section section--dark">
     <div class="wrap">
@@ -116,9 +100,21 @@
   <section class="section">
     <div class="wrap">
       <p class="section-label">Watch and listen</p>
-      <!-- TODO(JP): video or audio embed — YouTube (use youtube-nocookie.com), Vimeo, or a
-           SoundCloud/Spotify player. Paste the iframe inside a <div class="embed"> here. -->
-      <span class="placeholder placeholder--media">Video or audio &mdash; to be supplied</span>
+      <!-- Self-hosted rather than embedded: there's no YouTube upload for this one.
+           Re-encoded to 720p / 28MB with faststart, so it begins playing before the
+           whole file has downloaded. preload="none" keeps it off the wire until
+           someone actually presses play. -->
+      <video class="video-player"
+             controls
+             preload="none"
+             playsinline
+             poster="lemonade-fuzz-poster-1280.jpg"
+             width="1280" height="720">
+        <source src="lemonade-fuzz-medley.mp4" type="video/mp4">
+        <p>Your browser can&rsquo;t play this video.
+           <a href="lemonade-fuzz-medley.mp4">Download it instead</a>.</p>
+      </video>
+      <p class="note" style="margin-top:1rem">Live medley &mdash; two minutes.</p>
     </div>
   </section>
 
@@ -155,11 +151,8 @@
       <a class="site-footer__email" href="mailto:johnpaul.deg@gmail.com">johnpaul.deg@gmail.com</a>
       <ul class="footer-links">
         <li><a href="index.html#work">Work</a></li>
-        <li><a href="phenomena.html">Phenomena</a></li>
         <li><a href="#bookings">Bookings</a></li>
         <li><a href="index.html#contact">Contact</a></li>
-        <!-- TODO(JP): Lemonade Fuzz social links. -->
-        <li><span class="placeholder">Lemonade Fuzz socials &mdash; links needed</span></li>
       </ul>
     </div>
     <div class="site-footer__bottom">
